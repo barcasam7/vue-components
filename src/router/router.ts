@@ -1,5 +1,5 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Home from "./components/Home.vue";
+import Home from "./../components/Home.vue";
 
 const routes = [
   {
@@ -14,4 +14,4 @@ const router = createRouter({
   routes,
 });
 
-export default router;
+export { router, routes };
