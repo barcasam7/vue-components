@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import axios from "axios";
+import Skeleton from "./Skeleton.vue";
 
 type profile = {
    id: number;
@@ -21,6 +22,7 @@ const user = ref<null | profile>(null);
 const search = ref<string>("");
 const repos = ref<repo[]>([]);
 const userNotFound = ref<boolean>(false);
+const isLoading = ref<boolean>(false);
 
 function searchUser(event: Event): void {
    search.value = (event.target as HTMLInputElement).value;
@@ -28,14 +30,19 @@ function searchUser(event: Event): void {
 
 function getUsers(event: Event): void {
    event.preventDefault();
+   isLoading.value = true;
    axios
       .get(`https://api.github.com/users/${search.value}`)
       .then((data) => {
          user.value = data.data;
          getRepos();
          userNotFound.value = false;
+         isLoading.value = false;
       })
-      .catch(() => (userNotFound.value = true));
+      .catch(() => {
+         userNotFound.value = true;
+         isLoading.value = false;
+      });
 }
 
 function getRepos(): void {
@@ -50,7 +57,8 @@ function getRepos(): void {
       <input type="text" id="search" placeholder="Search a Github User" @change="searchUser($event)" />
    </form>
    <main id="id">
-      <div class="card" v-if="user !== null && !userNotFound">
+      <Skeleton v-if="isLoading" />
+      <div class="card" v-if="user !== null && !userNotFound && !isLoading">
          <div>
             <img :src="user.avatar_url" alt="" className="avatar" />
          </div>
@@ -69,6 +77,6 @@ function getRepos(): void {
             </div>
          </div>
       </div>
-      <p v-if="userNotFound">No user found for that username</p>
+      <p v-if="userNotFound && !isLoading">No user found for that username</p>
    </main>
 </template>
