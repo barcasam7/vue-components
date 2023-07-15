@@ -29,7 +29,7 @@ const toggleMenu = () => {
       <nav :class="isOpen ? 'opened' : ''" class="mobile-nav">
          <ul>
             <li v-for="(routeLink, index) in links" :key="index">
-               <router-link :class="route.fullPath === routeLink.path ? 'active' : ''" :to="routeLink.path"> {{ routeLink.name }}</router-link>
+               <router-link :class="route.fullPath === routeLink.path ? 'active' : ''" :to="routeLink.path" @click="toggleMenu"> {{ routeLink.name }}</router-link>
             </li>
          </ul>
       </nav>
