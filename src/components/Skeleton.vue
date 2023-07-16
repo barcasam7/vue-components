@@ -5,11 +5,16 @@
       </div>
       <div className="user-info">
          <h2></h2>
-         <p></p>
-         <p></p>
-         <p></p>
+         <p v-for="_n in rows"></p>
       </div>
    </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { rows } = defineProps<{
+   rows: number;
+}>();
+defineExpose({
+   rows,
+});
+</script>

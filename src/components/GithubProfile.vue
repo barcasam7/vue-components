@@ -22,7 +22,7 @@ const user = ref<null | profile>(null);
 const search = ref<string>("");
 const repos = ref<repo[]>([]);
 const userNotFound = ref<boolean>(false);
-const isLoading = ref<boolean>(false);
+const isLoading = ref<boolean>(true);
 
 function searchUser(event: Event): void {
    search.value = (event.target as HTMLInputElement).value;
@@ -57,7 +57,7 @@ function getRepos(): void {
       <input type="text" id="search" placeholder="Search a Github User" @change="searchUser($event)" />
    </form>
    <main id="id">
-      <Skeleton v-if="isLoading" />
+      <Skeleton :rows="3" v-if="isLoading" />
       <div class="card" v-if="user !== null && !userNotFound && !isLoading">
          <div>
             <img :src="user.avatar_url" alt="" className="avatar" />
