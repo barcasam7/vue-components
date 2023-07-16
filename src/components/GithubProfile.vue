@@ -22,7 +22,7 @@ const user = ref<null | profile>(null);
 const search = ref<string>("");
 const repos = ref<repo[]>([]);
 const userNotFound = ref<boolean>(false);
-const isLoading = ref<boolean>(true);
+const isLoading = ref<boolean>(false);
 
 function searchUser(event: Event): void {
    search.value = (event.target as HTMLInputElement).value;
