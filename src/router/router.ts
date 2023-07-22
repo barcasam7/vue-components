@@ -4,7 +4,7 @@ import GithubProfile from "./../components/GithubProfile.vue";
 import Review from "./../components/Review.vue";
 import ExpandableImage from "../components/ExpandableImage.vue";
 import DragDrogUpload from "../components/DragDropUpload.vue";
-import FilterSearch from "../components/FilterSearch.vue";
+import LiveSearch from "../components/LiveSearch.vue";
 
 const routes = [
    {
@@ -33,9 +33,9 @@ const routes = [
       component: DragDrogUpload,
    },
    {
-      path: "/filter-search",
-      name: "Filter Search",
-      component: FilterSearch,
+      path: "/live-search",
+      name: "live Search",
+      component: LiveSearch,
    },
 ];
 
