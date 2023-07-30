@@ -5,6 +5,7 @@ import Review from "./../components/Review.vue";
 import ExpandableImage from "../components/ExpandableImage.vue";
 import DragDrogUpload from "../components/DragDropUpload.vue";
 import LiveSearch from "../components/LiveSearch.vue";
+import DraggableSlider from "../components/DraggableSlider.vue";
 
 const routes = [
    {
@@ -36,6 +37,11 @@ const routes = [
       path: "/live-search",
       name: "live Search",
       component: LiveSearch,
+   },
+   {
+      path: "/draggable-slider",
+      name: "Draggable Slider",
+      component: DraggableSlider,
    },
 ];
 
