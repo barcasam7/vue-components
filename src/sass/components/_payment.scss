@@ -59,6 +59,20 @@
             margin-top: 0.5em;
         }
     }
+
+    .visa-logo {
+        position: absolute;
+        width: 50px;
+        margin-top: 4em;
+        right: 1em;
+    }
+
+    .black-strip {
+        position: relative;
+        background-color: #000000;
+        height: 50px;
+        top: 2em
+    }
 }
 
 .card-number {
@@ -70,13 +84,6 @@
     margin-bottom: 2em;
     font-size: 18px;
     padding: 0px 20px;
-
-    .black-strip {
-        position: relative;
-        background-color: #000000;
-        height: 50px;
-        top: 2em;
-    }
 
     .card-number-display {
         margin-right: 3px;

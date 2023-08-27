@@ -64,7 +64,7 @@
             </div>
             <div>
                <label for="cvv">CVV:</label>
-               <input type="number" id="cvv" placeholder="***" />
+               <input @focus="flipCard" @blur="flipBack" @keyup="inputCVV($event)" type="number" id="cvv" placeholder="***" />
             </div>
          </div>
       </form>
@@ -106,7 +106,29 @@ function inputName(event: Event) {
    }
 }
 
+function flipCard() {
+   const card = document.getElementById("card");
+   if (card === null) {
+      return;
+   }
+   card.style.transform = "rotateY(180deg)";
+}
+
+function flipBack() {
+   const card = document.getElementById("card");
+   if (card === null) {
+      return;
+   }
+   card.style.transform = "rotateY(0deg)";
+}
+
 function inputCVV(event: Event) {
    CVV.value = (event.target as HTMLInputElement).value;
+
+   const cvvDisplay = document.getElementById("cvv-display");
+   if (cvvDisplay === null) {
+      return;
+   }
+   cvvDisplay.innerText = CVV.value;
 }
 </script>
