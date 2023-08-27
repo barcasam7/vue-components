@@ -6,6 +6,7 @@ import ExpandableImage from "../components/ExpandableImage.vue";
 import DragDrogUpload from "../components/DragDropUpload.vue";
 import LiveSearch from "../components/LiveSearch.vue";
 import DraggableSlider from "../components/DraggableSlider.vue";
+import Payment from "../components/Payment.vue";
 
 const routes = [
    {
@@ -42,6 +43,11 @@ const routes = [
       path: "/draggable-slider",
       name: "Draggable Slider",
       component: DraggableSlider,
+   },
+   {
+      path: "/payment",
+      name: "Payment",
+      component: Payment,
    },
 ];
 
