@@ -3,8 +3,8 @@
       <div class="credit-card" id="card">
          <div class="card-front">
             <div class="branding">
-               <img src="chip.png" class="chip-img" />
-               <img src="visa.png" class="visa-logo" />
+               <img src="/chip.png" class="chip-img" />
+               <img src="/visa.png" class="visa-logo" />
             </div>
             <div class="card-number">
                <div>
@@ -49,7 +49,7 @@
                <span>CVV</span>
                <div id="cvv-display"></div>
             </div>
-            <img src="visa.png" class="visa-logo" />
+            <img src="/visa.png" class="visa-logo" />
          </div>
       </div>
       <form>
