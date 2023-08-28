@@ -60,7 +60,7 @@
          <div class="date-cvv">
             <div>
                <label for="validity">Expires On:</label>
-               <input type="date" id="validity-input" />
+               <input @input="inputExpiryDate($event)" type="date" id="validity-input" />
             </div>
             <div>
                <label for="cvv">CVV:</label>
@@ -77,6 +77,7 @@ import { ref } from "vue";
 const cardNumber = ref<string>("");
 const name = ref<string>("");
 const CVV = ref<string>("");
+const expiry = ref<string>("");
 
 function inputCardNumber(event: Event) {
    cardNumber.value = (event.target as HTMLInputElement).value.slice(0, 16).replace(/\D/g, "");
@@ -130,5 +131,27 @@ function inputCVV(event: Event) {
       return;
    }
    cvvDisplay.innerText = CVV.value;
+}
+
+function inputExpiryDate(event: Event) {
+   expiry.value = (event.target as HTMLInputElement).value;
+   const displayValidity = document.getElementById("validity");
+
+   if (displayValidity === null) {
+      return;
+   }
+
+   if (expiry.value.length < 1) {
+      displayValidity.innerText = "06/28";
+      return false;
+   }
+
+   const parts = expiry.value.split("-");
+   const year = parts[0].slice(2);
+   const month = parts[1];
+
+   //Final formatted string
+   const formattedString = `${month}/${year}`;
+   displayValidity.innerText = formattedString;
 }
 </script>

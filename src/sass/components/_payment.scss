@@ -58,6 +58,14 @@
             background-color: #ffffff;
             margin-top: 0.5em;
         }
+
+        span {
+            margin-right: 1em;
+        }
+    }
+
+    #cvv-display {
+        padding-right: 1em;
     }
 
     .visa-logo {
@@ -104,17 +112,6 @@
     #card-holder-name {
         text-transform: uppercase;
     }
-}
-
-.card-back .card-back .white-strip span {
-    margin-right: 1em;
-}
-
-.card-back .white-strip .card-back .visa-logo {
-    position: absolute;
-    width: 50px;
-    margin-top: 4em;
-    right: 1em;
 }
 
 form {
