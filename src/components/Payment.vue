@@ -1,6 +1,6 @@
 <template>
    <div class="payment-wrapper">
-      <div class="credit-card" id="card">
+      <div ref="card" class="credit-card" id="card">
          <div class="card-front">
             <div class="branding">
                <img src="/chip.png" class="chip-img" />
@@ -78,6 +78,7 @@ const cardNumber = ref<string>("");
 const name = ref<string>("");
 const CVV = ref<string>("");
 const expiry = ref<string>("");
+const card = ref<null | HTMLDivElement>(null);
 
 function inputCardNumber(event: Event) {
    cardNumber.value = (event.target as HTMLInputElement).value.slice(0, 16).replace(/\D/g, "");
@@ -108,19 +109,15 @@ function inputName(event: Event) {
 }
 
 function flipCard() {
-   const card = document.getElementById("card");
-   if (card === null) {
-      return;
+   if (card.value !== null) {
+      card.value.style.transform = "rotateY(180deg)";
    }
-   card.style.transform = "rotateY(180deg)";
 }
 
 function flipBack() {
-   const card = document.getElementById("card");
-   if (card === null) {
-      return;
+   if (card.value !== null) {
+      card.value.style.transform = "rotateY(0deg)";
    }
-   card.style.transform = "rotateY(0deg)";
 }
 
 function inputCVV(event: Event) {
