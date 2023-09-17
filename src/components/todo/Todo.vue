@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 
 type Tasks = {
    text: string;
-   status: "pending" | "completed";
+   completed: boolean;
 };
 
 const tasks = ref<Tasks[]>([]);
@@ -15,7 +15,7 @@ function clearTasks() {
 }
 
 function addTask(_event: Event) {
-   tasks.value.push({ text: search.value, status: "pending" });
+   tasks.value.push({ text: search.value, completed: false });
    search.value = "";
    //alternative
    // tasks.value = [...tasks.value, { text: value, completed: false }];
@@ -27,14 +27,14 @@ function changeType(value: string) {
 
 function changeStatus(id: number, event: Event) {
    const checked = (event.target as HTMLInputElement).checked;
-   tasks.value[id].status = checked ? "completed" : "pending";
+   tasks.value[id].completed = checked;
 }
 
 const filteredTasks = computed(() => {
    if (type.value === "all") {
       return tasks.value;
    } else {
-      return tasks.value.filter((task) => task.status === type.value);
+      return tasks.value.filter((task) => (task.completed === (type.value === "completed") ? 1 : 0));
    }
 });
 </script>
@@ -57,8 +57,8 @@ const filteredTasks = computed(() => {
       <ul class="task-box">
          <li v-for="(task, id) in filteredTasks" class="task" :key="id">
             <label>
-               <input @change="changeStatus(id, $event)" :checked="task.status === 'completed' ? 1 : 0" name="status" type="checkbox" />
-               <p :class="task.status === 'completed' && 'checked'">{{ task.text }}</p>
+               <input @change="changeStatus(id, $event)" v-model="task.completed" name="status" type="checkbox" />
+               <p :class="task.completed && 'checked'">{{ task.text }}</p>
             </label>
             <div class="settings">
                <v-icon name="fa-ellipsis-h" />
