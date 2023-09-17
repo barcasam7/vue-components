@@ -43,7 +43,7 @@ const filteredTasks = computed(() => {
 <template>
    <div class="wrapper-todo">
       <div class="task-input">
-         <img src="bars-icon.svg" alt="icon" />
+         <img src="/bars-icon.svg" alt="icon" />
          <input type="text" name="search" v-model="search" placeholder="Add a new task" @keyup.enter="addTask($event)" />
       </div>
       <div class="controls">
