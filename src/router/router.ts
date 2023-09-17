@@ -7,12 +7,23 @@ import DragDrogUpload from "../components/DragDropUpload.vue";
 import LiveSearch from "../components/LiveSearch.vue";
 import DraggableSlider from "../components/DraggableSlider.vue";
 import Payment from "../components/Payment.vue";
+import Todo from "../components/todo/Todo.vue";
 
 const routes = [
    {
       path: "/",
       name: "Home",
       component: Home,
+   },
+   {
+      path: "/todo",
+      name: "Todo List",
+      component: Todo,
+   },
+   {
+      path: "/payment",
+      name: "Payment",
+      component: Payment,
    },
    {
       path: "/review",
@@ -43,11 +54,6 @@ const routes = [
       path: "/draggable-slider",
       name: "Draggable Slider",
       component: DraggableSlider,
-   },
-   {
-      path: "/payment",
-      name: "Payment",
-      component: Payment,
    },
 ];
 
