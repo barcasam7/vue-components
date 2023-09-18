@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 
 type Tasks = {
    text: string;
@@ -15,11 +15,23 @@ function clearTasks() {
 }
 
 function addTask(_event: Event) {
+   if (search.value.length === 0) {
+      return;
+   }
+
    tasks.value.push({ text: search.value, completed: false });
    search.value = "";
    //alternative
    // tasks.value = [...tasks.value, { text: value, completed: false }];
 }
+
+watch(
+   tasks,
+   (newVal) => {
+      localStorage.setItem("tasks", JSON.stringify(newVal));
+   },
+   { deep: true }
+);
 
 function changeType(value: string) {
    type.value = value;
@@ -36,6 +48,10 @@ const filteredTasks = computed(() => {
    } else {
       return tasks.value.filter((task) => (task.completed === (type.value === "completed") ? 1 : 0));
    }
+});
+
+onMounted(() => {
+   tasks.value = JSON.parse(localStorage.getItem("tasks") as string) || [];
 });
 </script>
 
