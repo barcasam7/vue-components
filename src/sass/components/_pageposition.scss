@@ -1,0 +1,37 @@
+#page-position-container {
+    display: flex;
+
+    .article {
+        width: 75%;
+        margin-bottom: 50px;
+    }
+
+    section {
+        margin-bottom: 50px;
+    }
+
+    aside {
+        width: 25%;
+
+        div {
+            position: sticky;
+            top: 20px;
+            padding-left: 2em;
+
+            a {
+                display: block;
+                color: #2c3e50;
+                text-decoration: none;
+                border-left: 1px solid #ccc;
+                padding-left: 20px;
+                padding-bottom: 10px;
+
+                &.active {
+                    color: #e74c3c;
+                    font-weight: bold;
+
+                }
+            }
+        }
+    }
+}

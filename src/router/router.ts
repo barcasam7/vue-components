@@ -8,6 +8,7 @@ import LiveSearch from "../components/LiveSearch.vue";
 import DraggableSlider from "../components/DraggableSlider.vue";
 import Payment from "../components/Payment.vue";
 import Todo from "../components/todo/Todo.vue";
+import PagePosition from "../components/PagePosition.vue";
 
 const routes = [
    {
@@ -54,6 +55,11 @@ const routes = [
       path: "/draggable-slider",
       name: "Draggable Slider",
       component: DraggableSlider,
+   },
+   {
+      path: "/page-position",
+      name: "Page Position",
+      component: PagePosition,
    },
 ];
 
