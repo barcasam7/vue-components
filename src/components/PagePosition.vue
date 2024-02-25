@@ -38,13 +38,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 const headers: string[] = ["About me", "Bio", "Followers", "Following", "Public Repos"];
 
 const currentSection = ref<string>("");
+const observer = ref<IntersectionObserver | null>(null);
 
 onMounted(() => {
-   const observer = new IntersectionObserver(
+   observer.value = new IntersectionObserver(
       (entries) => {
          entries.forEach((entry) => {
             if (entry.intersectionRatio > 0) {
@@ -59,7 +60,11 @@ onMounted(() => {
    );
 
    document.querySelectorAll(".article h2").forEach((section: Element) => {
-      observer.observe(section);
+      observer.value?.observe(section);
    });
+});
+
+onUnmounted(() => {
+   observer.value?.unobserve(document.querySelector(".article h2") as Element);
 });
 </script>
