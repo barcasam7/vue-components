@@ -65,6 +65,6 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-   observer.value?.unobserve(document.querySelector(".article h2") as Element);
+   observer.value?.disconnect();
 });
 </script>
