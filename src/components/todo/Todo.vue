@@ -10,6 +10,8 @@ const tasks = ref<Tasks[]>([]);
 const search = ref<string>("");
 const type = ref<string>("all");
 
+defineExpose({ tasks });
+
 function clearTasks() {
    tasks.value = [];
 }
