@@ -42,10 +42,10 @@ const randomPerson = () => {
       <p className="job">{{ person.job }}</p>
       <p className="info">{{ person.text }}</p>
       <div className="button-container">
-         <button className="prev-btn" @click="getReview($event, 'next')">
+         <button className="prev-btn" @click="getReview($event, 'previous')">
             <v-icon name="fa-chevron-left" />
          </button>
-         <button className="next-btn" @click="getReview($event, 'previos')">
+         <button className="next-btn" @click="getReview($event, 'next')">
             <v-icon name="fa-chevron-right" />
          </button>
       </div>
