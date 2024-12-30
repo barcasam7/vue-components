@@ -4,7 +4,7 @@ import GithubProfile from "./../components/GithubProfile.vue";
 import Review from "./../components/Review.vue";
 import ExpandableImage from "../components/ExpandableImage.vue";
 import DragDrogUpload from "../components/DragDropUpload.vue";
-import LiveSearch from "../components/LiveSearch.vue";
+import Autocomplete from "../components/Autocomplete.vue";
 import DraggableSlider from "../components/DraggableSlider.vue";
 import Payment from "../components/Payment.vue";
 import Todo from "../components/todo/Todo.vue";
@@ -47,9 +47,9 @@ const routes = [
       component: DragDrogUpload,
    },
    {
-      path: "/live-search",
-      name: "live Search",
-      component: LiveSearch,
+      path: "/autocomplete",
+      name: "Autocomplete Search",
+      component: Autocomplete,
    },
    {
       path: "/draggable-slider",
